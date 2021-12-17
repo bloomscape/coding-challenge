@@ -61,7 +61,8 @@ export const vendingSlice = createSlice({
                 code: '021'
             }],
         cash: 0,
-        change: 0
+        change: 0,
+        code: ''
     },
     reducers: {
         addCash: (state, action) => {
@@ -72,7 +73,7 @@ export const vendingSlice = createSlice({
             state.cash = 0;
         },
         productSelected: (state, action) => {
-            state = state.sodas.map(soda => {
+            state.sodas = state.sodas.map(soda => {
                 if(soda.type === action.payload)
                     return {
                         ...soda,
@@ -80,10 +81,44 @@ export const vendingSlice = createSlice({
                     }
                 return soda
             })
+        },
+        typing: (state, action) => {
+            if(action.payload === '#'){
+                state.sodas = state.sodas.map(soda => {
+                    if(state.code === soda.code){
+                        if(state.cash >= soda.cost){
+                            state.currentState = 'DISPATCH';
+                            state.code = '';
+                            state.change = state.cash - soda.cost;
+                            return {
+                                ...soda,
+                                total: soda.total - 1
+                            }
+                        }
+                        else{
+                            state.code += action.payload
+                            state.currentState = 'NOT_ENOUGHT'
+                        }
+                    }
+                    return soda;
+                });
+
+            }
+            if(action.payload != '<-' && action.payload != '#'){
+                state.code += action.payload
+            } else {
+                state.code = state.code.substring(0, state.code.length -1 )
+            }
+        },
+        clear: (state) => {
+            state.cash = 0;
+            state.change = 0;
+            state.code = '';
+            state.currentState = 'START';
         }
-    }
+    }, 
 })
 
-export const { addCash, removeCash, productSelected } = vendingSlice.actions
+export const { addCash, removeCash, productSelected, typing, clear } = vendingSlice.actions
 
 export default vendingSlice.reducer;
