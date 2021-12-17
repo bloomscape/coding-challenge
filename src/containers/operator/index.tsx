@@ -60,11 +60,15 @@ const StyledKeyboard = styled.div`
 `;
 
 const StyledDisplay = styled.div`
-    width: 200px;
+    width: 190px;
     height: 60px;
     border: solid 2px #000;
     margin-bottom: 20px;
     background-color: #92afb3;
+    font-family: 'Codystar', cursive;
+    color: #000;
+    font-weight: bold;
+    padding: 5px;
 `;
 
 const StyledBox = styled.div`
@@ -78,7 +82,9 @@ const StyledBox = styled.div`
 
 const Operator = () => {
     return <StyledWrapper>
-        <StyledDisplay></StyledDisplay>
+        <StyledDisplay>
+            Insert cash...
+        </StyledDisplay>
         <StyledKeyboard>
             <button>1</button>
             <button>2</button>
