@@ -89,18 +89,23 @@ export const vendingSlice = createSlice({
                 state.sodas = state.sodas.map(soda => {
                     if(state.code === soda.code){
                         isCodeAvailable = true;
-                        if(state.cash >= soda.cost){
-                            state.currentState = 'DISPATCH';
-                            state.code = '';
-                            state.change = state.cash - soda.cost;
-                            return {
-                                ...soda,
-                                total: soda.total - 1
+                        if(soda.total > 0){
+                            if(state.cash >= soda.cost){
+                                state.currentState = 'DISPATCH';
+                                state.code = '';
+                                state.change = state.cash - soda.cost;
+                                return {
+                                    ...soda,
+                                    total: soda.total - 1
+                                }
                             }
-                        }
-                        else{
+                            else{
+                                state.code += action.payload
+                                state.currentState = 'NOT_ENOUGHT'
+                            }
+                        } else {
                             state.code += action.payload
-                            state.currentState = 'NOT_ENOUGHT'
+                            state.currentState = 'NOT_AVAILABLE'
                         }
                     }
                     return soda;

@@ -29,6 +29,7 @@ const Display = () => {
             case 'START': setText('INSERT CASH...'); break;
             case 'CASH_ADDED': setText(`$ ${cash.toFixed(2)}`); break;
             case 'NOT_ENOUGHT': setText('NOT ENOUGH, INSERT MORE...'); break;
+            case 'NOT_AVAILABLE': setText('NOT AVAILABLE...'); break;
             case 'DISPATCH': setText(`DISPATCHING...`); setTimeout(()=>{
                 setText(`YOUR CHANGE IS $ ${change.toFixed(2)}`);
                 setTimeout(() => {

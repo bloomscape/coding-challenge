@@ -55,17 +55,19 @@ const Can = ({soda}: any) => {
     return <Wrapped>
         {code === soda.code ? 
             <StyledCanSelected style={{
-                backgroundImage: `url('/assets/images/sodas/${soda.type}.png')`
+                backgroundImage: `url('/assets/images/sodas/${soda.type}.png')`,
+                opacity: soda.total === 0 ? .4 : 1
             }}/> :
             <StyledCan style={{
-                backgroundImage: `url('/assets/images/sodas/${soda.type}.png')`
+                backgroundImage: `url('/assets/images/sodas/${soda.type}.png')`,
+                opacity: soda.total === 0 ? .4 : 1
             }}/> 
         }
         <StyledPrice>
            $ {soda.cost.toFixed(2)}
         </StyledPrice>
         <div className="code">
-            # {soda.code}
+            {soda.code}#
         </div>
     </Wrapped>
 };
