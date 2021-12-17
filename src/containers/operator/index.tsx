@@ -1,4 +1,6 @@
 import React from 'react';
+import Display from '../../components/display';
+import Keyboard from '../../components/keyboard';
 
 import styled from 'styled-components';
 
@@ -44,33 +46,6 @@ const StyledTicketCollector = styled.div`
     background-color: #8cbb67;
 `;
 
-const StyledKeyboard = styled.div`
-    margin-bottom: 20px;
-    background-color: #342925;
-    padding: 20px;
-    button{ 
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        margin: 7px;
-        padding:0px;
-        border: none;
-        outline: none;
-    }
-`;
-
-const StyledDisplay = styled.div`
-    width: 190px;
-    height: 60px;
-    border: solid 2px #000;
-    margin-bottom: 20px;
-    background-color: #92afb3;
-    font-family: 'Codystar', cursive;
-    color: #000;
-    font-weight: bold;
-    padding: 5px;
-`;
-
 const StyledBox = styled.div`
     width: 200px;
     height: 80px;
@@ -82,26 +57,8 @@ const StyledBox = styled.div`
 
 const Operator = () => {
     return <StyledWrapper>
-        <StyledDisplay>
-            Insert cash...
-        </StyledDisplay>
-        <StyledKeyboard>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <br></br>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <br></br>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <br></br>
-            <button>#</button>
-            <button>0</button>
-            <button> {'<-'} </button>
-        </StyledKeyboard>
+        <Display></Display>
+        <Keyboard></Keyboard>
         <StyledTicketCollector></StyledTicketCollector>
         <StyledCoinCollector>
             <div className="circle">
