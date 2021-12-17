@@ -83,9 +83,12 @@ export const vendingSlice = createSlice({
             })
         },
         typing: (state, action) => {
+            state.currentState = 'CASH_ADDED';
             if(action.payload === '#'){
+                let isCodeAvailable = false;
                 state.sodas = state.sodas.map(soda => {
                     if(state.code === soda.code){
+                        isCodeAvailable = true;
                         if(state.cash >= soda.cost){
                             state.currentState = 'DISPATCH';
                             state.code = '';
@@ -102,10 +105,14 @@ export const vendingSlice = createSlice({
                     }
                     return soda;
                 });
-
+                if(!isCodeAvailable){
+                    state.currentState = 'NOT_VALID';
+                    state.code = '';
+                }
             }
             if(action.payload != '<-' && action.payload != '#'){
-                state.code += action.payload
+                if(state.code.length < 3)
+                    state.code += action.payload
             } else {
                 state.code = state.code.substring(0, state.code.length -1 )
             }

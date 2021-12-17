@@ -1,6 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { useSelector } from 'react-redux';
 
+const bling = keyframes`
+    from{ 
+        background-color: #fadfa9;    
+    }
+    to{ 
+        background-color: red;
+    }
+`;
 const StyledDispatcher = styled.div`
     width: 500px;
     height: 80px;
@@ -9,9 +18,12 @@ const StyledDispatcher = styled.div`
     background-color: #fadfa9;
     margin-top: 30px;
 `;
+const StyledDispatcherActive = styled(StyledDispatcher)`
+    animation: ${bling} 2s alternate infinite;
+`;
 const Dispatcher = () => {
-    return <StyledDispatcher>
-    </StyledDispatcher>
+    const currentState = useSelector((state:any) => state.vending.currentState)
+    return <>{ currentState === 'DISPATCH' ? <StyledDispatcherActive/> : <StyledDispatcher/>}</>
 }
 
 export default Dispatcher;

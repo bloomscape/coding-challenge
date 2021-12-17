@@ -35,8 +35,9 @@ const Display = () => {
                     dispatch(clear())
                 }, 2000)
             }, 2000); break;
+            case 'NOT_VALID': setText('CODE NOT VALID...')
         }
-    }, [currentState])
+    }, [currentState, cash])
     const renderingText = () => {
         
     }

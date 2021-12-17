@@ -4,15 +4,19 @@ import { addCash } from '../../module/vendingSlice';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-    img{
-        width: 200px;
-        height: 100px;
-        object-fit: contain;
-    }
     position: fixed;
     right: 0px;
     top: 0px;
     cursor: pointer;
+    img{
+        width: 200px;
+        height: 100px;
+        object-fit: contain;
+        transition: transform .5s ease-out;
+    }
+    img:hover{
+        transform: scale(1.3)
+    }
 `;
 const Cash = () => {
     const cash = useSelector((state: any) => state.vending.cash)

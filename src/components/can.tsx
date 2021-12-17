@@ -1,5 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { useSelector } from 'react-redux';
+
+const bounce = keyframes`
+    from{
+        transform: scale(1);
+    }
+    to{
+        transform: scale(1.1);
+    }
+`;
 
 const StyledCan = styled.div`
     width: 100px;
@@ -9,6 +19,10 @@ const StyledCan = styled.div`
     background-position: center center;
     border-bottom: solid 7px #999;
     border-top: solid 4px #555;
+`;
+
+const StyledCanSelected = styled(StyledCan)`
+    animation: ${bounce} 1s alternate infinite;
 `;
 
 const StyledPrice = styled.p`
@@ -37,10 +51,16 @@ const Wrapped = styled.div`
 `;
 
 const Can = ({soda}: any) => {
+    const code = useSelector((state: any) => state.vending.code)
     return <Wrapped>
-        <StyledCan style={{
-            backgroundImage: `url('/assets/images/sodas/${soda.type}.png')`
-        }}></StyledCan>
+        {code === soda.code ? 
+            <StyledCanSelected style={{
+                backgroundImage: `url('/assets/images/sodas/${soda.type}.png')`
+            }}/> :
+            <StyledCan style={{
+                backgroundImage: `url('/assets/images/sodas/${soda.type}.png')`
+            }}/> 
+        }
         <StyledPrice>
            $ {soda.cost.toFixed(2)}
         </StyledPrice>
