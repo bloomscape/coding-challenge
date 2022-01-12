@@ -11,4 +11,5 @@ api = Api(app)
 
 db = SQLAlchemy(app)
 
-api.add_resource(Products, '/')
+api.add_resource(Products, '/api/v1/products',
+                 '/api/v1/products/<string:product_id>')
