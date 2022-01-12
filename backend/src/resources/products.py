@@ -8,12 +8,6 @@ products_args.add_argument(
     'name', type=str, required=True, help='Name is required')
 products_args.add_argument(
     'price', type=float, required=True, help='Price is required')
-products_args.add_argument(
-    'image', type=str, required=True, help='Image is required')
-products_args.add_argument(
-    'stock', type=int, required=True, help='Stock is required')
-products_args.add_argument(
-    'bar_code', type=str, required=True, help='Bar code is required')
 
 
 def abort_if_product_doesnt_exist(product_id):

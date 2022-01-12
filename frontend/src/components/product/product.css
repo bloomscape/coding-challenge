@@ -1,0 +1,28 @@
+.product__container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--terciary-color);
+	width: 100%;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
+.actions__button {
+	height: 5rem;
+	width: 5rem;
+	border-radius: 50%;
+	border: 1px solid var(--secondary-color);
+	background-color: var(--primary-color);
+	color: var(--terciary-color);
+	font-size: 1.5rem;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.actions__button:hover {
+	transition: 0.5s ease-in-out;
+	background-color: var(--secondary-color);
+	color: var(--primary-color);
+}

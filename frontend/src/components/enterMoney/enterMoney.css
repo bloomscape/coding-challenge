@@ -1,0 +1,27 @@
+.enterMoney__label {
+	font-size: 1.5rem;
+	font-weight: bold;
+	margin-bottom: 1rem;
+	color: var(--terciary-color);
+}
+
+.enterMoney__input {
+	height: 3rem;
+	width: 90%;
+	border-radius: 5px;
+	border: 1px solid var(--secondary-color);
+	padding: 0.5rem;
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+.enterMoney__button {
+	height: 5rem;
+	width: 5rem;
+	border: none;
+	outline: none;
+	background-color: var(--primary-color);
+	color: var(--terciary-color);
+	font-size: 2rem;
+	cursor: pointer;
+}

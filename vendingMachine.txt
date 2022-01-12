@@ -20,15 +20,17 @@ User is anonymus, so we don't need a user model
 Product
 	- uuid
 	- Name
-	- Image
 	- Price
-	- Barcode
-	- stock
 
-Endpoints
+BackEnd - Endpoints
 	- Add product -> {uuid} Returns the product created and 200, or an error code with a description
 	- Delete product -> {uuid} Returns the product created and 200, or an error code with a description
 	- Update product -> {uuid} Returns the product with updated stock and 200, or an missing product error
-	- Sell -> {uuid} Returns the change and a status of 200 and also diminish the stock of the product, returns an error and a description
 
-
+FrontEnd - Task
+    - Because the machine can be by used only one person at a time, we don't need to store the money in a database
+      that's why the react part use useState to hanlde the money, when you reload the page is like a new person
+      has arrived and the money is reset to 0
+    - The frontEnd will comunicate with the backend when an "administrator" wants to add, update or delete a product
+      and in the first load to fetch the products that are store in the backend
+    - The action of "buy a product" will be done by the frontEnd
