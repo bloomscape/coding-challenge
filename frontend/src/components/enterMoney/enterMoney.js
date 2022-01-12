@@ -1,10 +1,7 @@
 import './enterMoney.css'
-import { useState } from 'react';
 import {FaPlus} from 'react-icons/fa';
 
-const EnterMoney = () => {
-
-    const [money, setMoney] = useState(0);
+const EnterMoney = ({setMoney, money}) => {
 
     const formatMoney = (e) => {
         const moneyInput = document.querySelector('.enterMoney__input');
