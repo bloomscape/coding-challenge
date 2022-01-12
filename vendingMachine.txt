@@ -1,0 +1,34 @@
+Use Case
+	1 - Users approach vending machines
+
+	2 - Is presentend with all the options that have stock in display
+
+	3 - He enters the money in the vending machine
+
+	4 - He sellects the product he want to buy
+		The product can be out of stock	
+		The money can be less than the price of the product
+
+	5 - The vending machine gives the product and the change
+
+	6 - The vending machines awaits another client
+
+Models
+
+User is anonymus, so we don't need a user model
+
+Product
+	- uuid
+	- Name
+	- Image
+	- Price
+	- Barcode
+	- stock
+
+Endpoints
+	- Add product -> {uuid} Returns the product created and 200, or an error code with a description
+	- Delete product -> {uuid} Returns the product created and 200, or an error code with a description
+	- Update product -> {uuid} Returns the product with updated stock and 200, or an missing product error
+	- Sell -> {uuid} Returns the change and a status of 200 and also diminish the stock of the product, returns an error and a description
+
+
