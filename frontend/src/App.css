@@ -16,5 +16,5 @@
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	grid-template-rows: 1fr 1fr;
 	grid-gap: 1rem;
-	margin: 0 10px 0 10px;
+	margin: 0 10px 10px 10px;
 }

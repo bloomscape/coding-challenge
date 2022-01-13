@@ -7,7 +7,7 @@ responseGET = requests.get(BASE)
 print(responseGET.json())
 
 responsePUT = requests.put(
-    BASE, json={"uuid": str(uuid.uuid4()), "name": "test", "price": 1.0, "image": "test", "stock": 1, "bar_code": "test"})
+    BASE, json={"uuid": str(uuid.uuid4()), "name": "test", "price": 1.0})
 print(responsePUT.json())
 
 responsePATCH = requests.patch(

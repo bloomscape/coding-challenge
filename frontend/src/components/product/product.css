@@ -21,8 +21,18 @@
 	cursor: pointer;
 }
 
+.--disabled {
+	background-color: grey;
+	color: var(--terciary-color);
+	pointer-events: none;
+}
+
 .actions__button:hover {
 	transition: 0.5s ease-in-out;
 	background-color: var(--secondary-color);
 	color: var(--primary-color);
+}
+
+.actions__button:active {
+	transform: scaleX(0.9) scaleY(0.9);
 }

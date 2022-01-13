@@ -17,7 +17,7 @@ const EnterMoney = ({setMoney, money}) => {
                                 <button className="enterMoney__button" onClick={formatMoney}><FaPlus /></button>
                             </>
                           : <>
-                                <label className="enterMoney__label">You have entered ${money}</label>
+                                <label className="enterMoney__label">You have left ${money}</label>
                             </>
             }
         </div>
