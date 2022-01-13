@@ -11,6 +11,17 @@
 	text-align: center;
 }
 
+.row__1__link {
+	text-decoration: none;
+	color: #fff;
+	font-size: 1.5rem;
+	font-weight: bold;
+	border-radius: 5px;
+	background-color: #000;
+	padding: 19px 20px;
+	margin: 33px 0 0 50px;
+}
+
 .app__container__row__2 {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;

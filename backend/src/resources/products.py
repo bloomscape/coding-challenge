@@ -1,7 +1,6 @@
 import json
 
 from flask_restful import Resource, reqparse, abort, fields, marshal_with
-from flask import jsonify
 
 from src.models.products import Product
 from src import db
@@ -16,6 +15,14 @@ products_args.add_argument(
 products_args.add_argument(
     'price', type=float, required=True, help='Price is required')
 
+products_args_update = reqparse.RequestParser()
+
+products_args_update.add_argument(
+    'uuid', type=str, required=True, help='UUID is required')
+products_args_update.add_argument(
+    'name', type=str)
+products_args_update.add_argument(
+    'price', type=float)
 
 resource_fields = {
     'uuid': fields.String,
@@ -48,10 +55,21 @@ class Products(Resource):
         except(e):
             return {"error": e}, 400
 
-    def patch(self, product_id):
-        abort_if_product_doesnt_exist(product_id)
+    def patch(self):
+        args = products_args_update.parse_args()
+        abort_if_product_doesnt_exist(args['uuid'])
         try:
-            product = Product.query.get(uuid=product_id)
+            product = Product.query.filter_by(
+                uuid=args['uuid']).first()
+
+            if args['name']:
+                product.name = args['name']
+
+            if args['price']:
+                product.price = args['price']
+
+            db.session.commit()
+
             return {"updated": product.uuid}, 200
         except Exception as e:
             return {"error": e}, 400
@@ -59,7 +77,9 @@ class Products(Resource):
     def delete(self, product_id):
         abort_if_product_doesnt_exist(product_id)
         try:
-            product = Product.query.get(uuid=product_id)
-            return {"deleted": product.uuid}, 200
+            product = Product.query.filter_by(uuid=product_id).first()
+            db.session.delete(product)
+            db.session.commit()
+            return {"deleted": product_id}, 200
         except Exception as e:
             return {"error": e}, 400

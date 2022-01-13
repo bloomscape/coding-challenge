@@ -1,9 +1,18 @@
+import { useState } from 'react'
+
 import './product.css'
 
-const Product = ({setMoney, product, disabled}) => {
+const Product = ({setMoney, product, disabled, money}) => {
+
+    const[err, setErr] = useState('')
 
     const handleClick = () => {
-        setMoney(money => money - product.price)
+        if (money - product.price <= 0) {
+            setErr('Insufficient funds')
+            return false
+        }
+
+        setMoney(() => money - product.price)
     }
 
     return ( 
@@ -15,6 +24,9 @@ const Product = ({setMoney, product, disabled}) => {
                 <div className="row__info__price">
                     <h2>${product.price}</h2>
                 </div>
+            </div>
+            <div className="product__container__error">
+                {err}
             </div>
             <div className="product__container__actions">
                 <button onClick={handleClick} className={`actions__button ${disabled}`}>Buy</button>

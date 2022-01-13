@@ -11,7 +11,7 @@ responsePUT = requests.put(
 print(responsePUT.json())
 
 responsePATCH = requests.patch(
-    BASE + "/" + str(uuid.uuid4()))
+    BASE, json={"uuid": str(uuid.uuid4()), "name": "test", "price": 1.0})
 print(responsePATCH.json())
 
 responseDELETE = requests.delete(

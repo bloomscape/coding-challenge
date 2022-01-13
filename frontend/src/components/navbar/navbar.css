@@ -1,0 +1,22 @@
+.nav__container {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	padding: 0.5rem 1rem;
+	background-color: #fff;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.nav__link {
+	padding: 0.5rem 1rem;
+	text-decoration: none;
+	color: #000;
+	font-size: 1.2rem;
+	font-weight: bold;
+	transition: all 0.2s ease-in-out;
+}
+
+.nav__link:hover {
+	color: #00a8ff;
+	transform: scaleX(1.1);
+}
