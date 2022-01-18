@@ -1,0 +1,5 @@
+.product__list__container {
+	display: flex;
+	flex-direction: column;
+	background-color: var(--tertiary-color);
+}

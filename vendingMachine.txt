@@ -1,0 +1,36 @@
+Use Case
+	1 - Users approach vending machines
+
+	2 - Is presentend with all the options that have stock in display
+
+	3 - He enters the money in the vending machine
+
+	4 - He sellects the product he want to buy
+		The product can be out of stock	
+		The money can be less than the price of the product
+
+	5 - The vending machine gives the product and the change
+
+	6 - The vending machines awaits another client
+
+Models
+
+User is anonymus, so we don't need a user model
+
+Product
+	- uuid
+	- Name
+	- Price
+
+BackEnd - Endpoints
+	- Add product -> {uuid} Returns the product created and 200, or an error code with a description
+	- Delete product -> {uuid} Returns the product created and 200, or an error code with a description
+	- Update product -> {uuid} Returns the product with updated stock and 200, or an missing product error
+
+FrontEnd - Task
+    - Because the machine can be by used only one person at a time, we don't need to store the money in a database
+      that's why the react part use useState to hanlde the money, when you reload the page is like a new person
+      has arrived and the money is reset to 0
+    - The frontEnd will comunicate with the backend when an "administrator" wants to add, update or delete a product
+      and in the first load to fetch the products that are store in the backend
+    - The action of "buy a product" will be done by the frontEnd
